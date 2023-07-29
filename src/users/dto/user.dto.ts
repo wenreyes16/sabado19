@@ -1,4 +1,4 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from "class-validator";
 import { isBooleanObject } from "util/types";
 
 export class CreateUserDto {
@@ -29,7 +29,7 @@ export class CreateUserDto {
 
     
     @IsBoolean()
-    @IsNotEmpty()
+    @IsOptional()
     active: boolean;
     
 
