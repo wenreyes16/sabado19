@@ -18,7 +18,7 @@ import { BrandsModule } from './brands/brands.module';
       synchronize: true,
     }),
     ProductsModule,
-    BrandsModule
+    BrandsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

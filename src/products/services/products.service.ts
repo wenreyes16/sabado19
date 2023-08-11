@@ -5,13 +5,13 @@ import { Repository } from 'typeorm';
 import { CreateProductDto } from '../dto/product.dto';
 
 @Injectable()
-export class ProductsService{
-    constructor(
-        @InjectRepository(Product)
-        private readonly productRepository: Repository <Product>
-    ) {}
+export class ProductsService {
+  constructor(
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
+  ) {}
 
-    async create(createProductDto: CreateProductDto){
-        return this.productRepository.save(createProductDto);
-    }
+  async create(createProductDto: CreateProductDto) {
+    return this.productRepository.save(createProductDto);
+  }
 }
