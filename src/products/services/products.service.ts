@@ -1,57 +1,44 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from "@nestjs/common";
 import { Product } from '../entities/product.entity';
-import { Repository } from 'typeorm';
+import { Repository } from "typeorm";
+import { InjectRepository } from "@nestjs/typeorm";
 import { CreateProductDto } from '../dto/product.dto';
 
 @Injectable()
-export class ProductsService {
-  constructor(
-    @InjectRepository(Product)
-    private readonly productRepo: Repository<Product>,
-  ) {}
+export class ProductsService{
+    constructor(
+        @InjectRepository(Product)
+        private readonly ProductRepo: Repository<Product>,
+    ) {}
 
-  //Crear un registro
-  async create(createProductDto: CreateProductDto) {
-    const product = this.productRepo.create(createProductDto);
-    await this.productRepo.save(product);
+    async create(CreateProductDto: CreateProductDto) {
+        const Product = this.ProductRepo.create(CreateProductDto);
+        await this.ProductRepo.save(Product);
 
-    return product;
-  }
-
-  //Encontrar un registro
-  // findOne(id: number) {
-  //   return this.productRepo.findOneBy({ id });
-  // }
-
-  //Encontrar un registro con relaciones
-  findOne(id: number) {
-    return this.productRepo.findOne({
-      where: { id },
-      relations: {
-        autor: true,
-      },
+        return Product;
+    }
+//encontrar registro
+findOne(id: number){
+    return this.ProductRepo.findOneBy({id})
+}
+//mostrar registro
+findAll(){
+    return this.ProductRepo.find({
+        order: {id: 'ASC'},
     });
-  }
+}
+// eliminar 
 
-  //Mostrar todos los registros
-  findAll() {
-    return this.productRepo.find({
-      order: { id: 'ASC' },
-    });
-  }
-
-  //Eliminar un registro
-  async remove(id: number) {
-    const product = await this.findOne(id);
-    await this.productRepo.remove(product);
-    return 'Producto eliminado satisfactoriamente';
-  }
-
-  //Actualizar un producto
-  async update(id: number, cambios: CreateProductDto) {
+async remove(id:number){
+    const Product =await this.findOne(id);
+    await this.ProductRepo.remove(Product);
+    return 'producto eliminado';
+}
+//actualizar
+async update(id: number, cambios: CreateProductDto){
     const oldProduct = await this.findOne(id);
-    const updatedProduct = await this.productRepo.merge(oldProduct, cambios);
-    return this.productRepo.save(updatedProduct);
-  }
+    const updateProduct = await this.ProductRepo.merge(oldProduct,cambios)
+         
+}
+
 }
