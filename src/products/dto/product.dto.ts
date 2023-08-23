@@ -1,16 +1,9 @@
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  IsString,
-  MaxLength,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 export class CreateProductDto {
   @IsNotEmpty()
   @IsNumber()
   id?: number;
-  //los decoradores en el dto validan que la informacion agregada sea correcta
 
   @IsString()
   @IsNotEmpty()
@@ -28,9 +21,5 @@ export class CreateProductDto {
 
   @IsNumber()
   @IsNotEmpty()
-  user_id: number;
-
-  @IsNumber()
-  @IsOptional()
   stock: number;
 }
