@@ -25,6 +25,8 @@ export class ProductsService{
             where: {id},
             relations: {
                 autor: true,
+                categoria: true,
+                proveedor:true,
             }
         });
     }

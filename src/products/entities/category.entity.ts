@@ -17,13 +17,4 @@ export class Category {
     @CreateDateColumn({  type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     created_at: Date;
 
-    @ManyToOne(()=> User)
-    @JoinColumn({
-      name: 'categoria_id', //el campo que relaciona a mi tabla
-      referencedColumnName: 'id' //este es el id del usuario
-  
-})
-
-autor: User;
-
 }
