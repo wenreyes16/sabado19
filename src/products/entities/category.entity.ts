@@ -19,7 +19,7 @@ export class Category {
 
     @ManyToOne(()=> User)
     @JoinColumn({
-      name: 'user_id', //el campo que relaciona a mi tabla
+      name: 'categoria_id', //el campo que relaciona a mi tabla
       referencedColumnName: 'id' //este es el id del usuario
   
 })

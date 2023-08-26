@@ -4,7 +4,7 @@ import { Product } from './entities/product.entity';
 import { ProductController } from './controllers/products.controller';
 import { ProductsService } from './services/products.service';
 import { ProductImage } from './entities/product-image.entity';
-import { CategoryController } from './controllers/categories.controllers';
+import { CategoryController } from './controllers/categories.controller';
 import { CategoriesService } from './services/categories.service';
 import { Category } from './entities/category.entity';
 
