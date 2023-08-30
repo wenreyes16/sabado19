@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Category } from './category.entity';
+import { Proveedor } from './proveedor.entity';
 
 @Entity()
 export class Product {

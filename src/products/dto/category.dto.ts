@@ -1,20 +1,25 @@
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+
 export class CreateCategoryDto {
-    @IsNotEmpty()
-    @IsNumber()
-    id?: number;
-  
-   @IsString()
-   @IsNotEmpty()
-   @MaxLength(100)
-   categoria: string;
+  @IsNotEmpty()
+  @IsNumber()
+  id?: number;
 
-   @IsDateString()
-   @IsOptional()
-   created_at: string;
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(100)
+  categoria: string;
 
-   @IsNotEmpty()
-   @IsNumber()
-   user_id: number;
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(300)
+  description: string;
 
+  @IsDateString()
+  @IsNotEmpty()
+  create_at: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  user_id: number;
 }

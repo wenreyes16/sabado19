@@ -22,19 +22,23 @@ export class ProductsService{
     //Encontrar un registro con relaciones
     findOne(id: number){
         return this.productRepo.findOne({
-            where: {id},
-            relations: {
-                autor: true,
-                categoria: true,
+            where:{id},
+            relations:{
+                autor:true,
+                categoria:true,
                 proveedor:true,
             }
         });
     }
 
-    //mostrar todos los registros
     findAll(){
         return   this.productRepo.find({
             order: {id: 'ASC'},
+                relations:{
+                autor:true,
+                categoria:true,
+                proveedor: true,
+            }
         });
     }
     //eliminar un registro

@@ -1,39 +1,38 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from "@nestjs/common";
-import { CategoriesService } from '../services/categories.service';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
 import { CreateCategoryDto } from '../dto/category.dto';
+import { CategoryService } from '../services/categories.service';
 
 
-@Controller('categories')
-export class CategoryController {
-constructor(private readonly categoriesService: CategoriesService) {}
-
+@Controller('category')
+export class CategoryController
+{
+    constructor(private readonly categoryService:CategoryService){}
     @Post()
-    async CreateCategory(@Body() createCategoryDto: CreateCategoryDto) {
-    return this.categoriesService.create(createCategoryDto);
-   }
+    async CreateProduct(@Body() createProductDto: CreateCategoryDto){
+        return this.categoryService.create(createProductDto);
+    }
 
-   @Get()
-   findAll(){
-    return this.categoriesService.findAll();
-   }
+    @Get()
+    findAll(){
+        return this.categoryService.findAll();
+    }
 
-   @Get(':id')
-   findOne(@Param('id', ParseIntPipe)id: number){
-    return this.categoriesService.findOne(id);
-   }
-   @Delete(':id')
-   remove(@Param('id', ParseIntPipe)id: number){
-       return this.categoriesService.remove(id);
-   }
+    @Get(':id')
+    findOne(@Param('id', ParseIntPipe)id: number){
+        return this.categoryService.findOne(id);
+    }
+    @Delete(':id')
+    remove(@Param('id', ParseIntPipe)id: number){
+        return this.categoryService.remove(id);
+    }
 
-   @Patch(':id')
-   update(
-       @Param('id', ParseIntPipe)id: number,
-       @Body()createCategoryDto :CreateCategoryDto,
-       
-   )
-   {
-       return this.categoriesService.update(id, createCategoryDto)
-   }
-
+    @Patch(':id')
+    update(
+        @Param('id', ParseIntPipe)id: number,
+        @Body()updateCategoryDto :CreateCategoryDto,
+        
+    )
+    {
+        return this.categoryService.update(id, updateCategoryDto)
+    }
 }

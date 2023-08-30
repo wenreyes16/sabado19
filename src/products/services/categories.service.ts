@@ -1,11 +1,10 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { Category } from '../entities/category.entity';
-import { Repository } from "typeorm";
 import { CreateCategoryDto } from '../dto/category.dto';
-
 @Injectable()
-export class CategoriesService{
+export class CategoryService{
     constructor(
         @InjectRepository(Category)
         private categoryRepo: Repository<Category>
@@ -13,30 +12,35 @@ export class CategoriesService{
 
     async create(createCategoryDto:CreateCategoryDto){
         const category = this.categoryRepo.create(createCategoryDto);
-        await this.categoryRepo.save(category);
+        await  this.categoryRepo.save(category);
         return category;
     }
-
+    //Encontrar un registro
     findOne(id: number){
         return this.categoryRepo.findOne({
-            where: {id},
-            relations: {
-                autor: true,
+            where:{id},
+            relations:{
+                autor:true,
             }
         });
     }
+    //mostrar todos los registros
     findAll(){
-        return this.categoryRepo.find({
+        return   this.categoryRepo.find({
             order: {id: 'ASC'},
+            relations:{
+                autor:true,
+            }
         });
     }
-    async remove(id: number){
+    //eliminar un registro
+    async remove(id:number){
         const category =await this.findOne(id);
         await this.categoryRepo.remove(category);
-        return 'categoria eliminada';
 
     }
 
+    //actualizar un registro
     async update(id: number, cambios: CreateCategoryDto){
         const oldCategory = await this.findOne(id);
         const updateCategory = await this.categoryRepo.merge(oldCategory, cambios);
