@@ -16,7 +16,7 @@ export class PdfFilesController{
 
         fileFilter: filterPDF,       //llamamos al fileFilter le asignamos helper
         storage: diskStorage({
-            destination: './static/pdf',
+            destination: './file/pdf/archivos',
             filename: fileNamer,
         }),
 
