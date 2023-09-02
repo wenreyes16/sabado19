@@ -23,8 +23,7 @@ export class Product {
   @Column({type: 'int4', nullable: false})
   user_id: number;
 
-  @Column({type: 'int4', nullable: false})
-  categoria_id: number;
+ 
 
   @Column({ type: 'varchar', nullable: true })
   filename: string;
